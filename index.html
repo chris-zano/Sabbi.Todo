@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./mobile.css">
+    <title>Sabbi.com</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Sabbi</h1>
+        </div>
+        <div class="nav">
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="#" id="profile">Profile</a></li>
+                    <li><a href="#" id="addtask">Add Tasks</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="search-box">
+            <input type="text" id="search-bar" placeholder="search">
+            <img src="./icons/search.svg" alt="">
+        </div>
+        <div class="balance-section">
+            <h2>Balance : v$ 0.19</h2>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="explore section">
+                <div class="trending" id="trending">
+                    <h2 class="section-title title"><a href="./assets/assets.html" id="Trending" >Trending</a></h2>
+                    <div class="box">
+                    </div>
+                </div>
+                <div class="latest" id="latest">
+                    <h2 class="section-title title"><a href="./assets/assets.html" id="Latest">Latest</a></h2>
+                    <div class="box ">
+                    </div>
+                </div>
+            </div>
+            <div class="recommendations section " id="recommendations">
+                <h2 class="section-title title"><a href="./assets/assets.html" id="Recommendations">Recommendations</a></h2>
+                <div class="box">
+                </div>
+            </div>
+            <div class="following section " id="following">
+                <h2 class="section-title title"><a href="./assets/assets.html" id="Following">Following</a></h2>
+                <div class="box">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-section">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Sponsors</a></li>
+                    <li><a href="#">Report Fraud</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+            </div>
+        </div>
+        <div class="copyright-section">
+            <p>copyright 2022 - sabbi.inc</p>
+        </div>
+    </footer>
+    <script>
+        if(document.readyState == 'loading') {
+            document.addEventListener('DOMContentLoaded', ready)
+        }
+        else {
+            ready()
+        }
+
+        function ready() {
+            const useDet = {
+                    tusername: '',
+                    tpassword: '',
+                    isLoggedIn: false
+                }
+            const taskDet = {
+                title : "",
+                description: "",
+                reward: 0
+            }
+
+            const taskArray = [taskDet]
+            const useArr = [useDet]
+            
+
+            if(localStorage.loginCred == null || localStorage.loginCred == undefined) {
+                localStorage.loginCred
+                localStorage.setItem('loginCred', JSON.stringify(useArr))
+                localStorage.setItem('task',JSON.stringify(taskArray))
+            }
+            else{
+                console.log(false);
+            }
+
+            const getId = (id) => {
+                return document.getElementById(id);
+            }
+
+            getId('profile').addEventListener('click', () => {
+                const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
+                if(isUserLogged == true) {
+                    window.location.href = './profile.html'
+                }
+                else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
+                    window.location.href = './login.html'
+                }
+            })
+            getId('addtask').addEventListener('click', () => {
+                const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
+                if(isUserLogged == true) {
+                    window.location.href = './addtask.html'
+                }
+                else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
+                    window.location.href = './login.html'
+                }
+            })
+        }
+
+
+    </script>
+    <script src="./tasks.js"></script>
+
+</body>
+</html>

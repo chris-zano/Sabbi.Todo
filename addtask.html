@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .formbucket {
+            display: grid;
+            width: 95vw;
+            margin:  2rem auto;
+            padding: 1rem;
+            border: thin;
+            border-radius: 1rem;
+            box-shadow: 1px 3px 3px #111;
+        }
+
+        header {
+            display: grid;
+            grid-auto-flow: row;
+            row-gap: 1px;
+            padding: 5px;
+            box-shadow: 0px 3px 3px #111111;
+            border-bottom-left-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+
+        .banner {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .banner strong {
+            font-size: 2rem;
+            font-weight: 300; 
+            cursor: pointer;
+        }
+
+        .balance-section {
+            display: grid;
+            grid-auto-flow: column;
+            gap: 10px;
+            font-size: 14px;
+            margin-right: 1rem;
+        }
+        .balance-section >h2{
+            padding: 0 1rem;
+            font-size: 1.5rem;
+            font-weight: 300; 
+        }
+        .balance-section >h2:hover,.balance-section >h2:focus {
+            text-decoration: underline;
+            cursor: pointer;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        .balance-section > img {
+            width: 21px;
+            background-color: #e0dede;
+            border-radius: 50px;
+        }
+        .balance-section > img:hover {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+        a{
+            text-decoration: none;
+            color: inherit;
+            font-size: 1.5rem;
+
+        }
+        #post-title,#post-des,#post-cost{
+            width: 50%;
+            height: 50px;
+            margin: 1rem auto;
+            text-indent: 1rem;
+            border: thin;
+            border-radius: 1rem;
+            box-shadow: 0px 3px 3px;
+        }
+        
+        #post{
+            background-color: #2f89ff;
+            width: 10%;
+            height: 45px;
+            margin: 1rem auto;
+            border: thin;
+            border-radius: 1rem;
+            box-shadow: 1px 3px 3px #111111;
+            color: white;
+            font-size: 1.2rem;
+        }
+        #post:hover {
+            background-color: #1379ff;
+        }
+        @media screen and (max-width:500px) {
+            #post-title,#post-des,#post-cost{
+                width: 70%;
+                height: 70%;
+                margin: 1rem auto;
+                text-indent: 1rem;
+                border: thin;
+                border-radius: 0.5rem;
+                box-shadow: 1px 3px 3px;
+                font-size: 1rem;
+            }
+            #post{
+                background-color: #2f89ff;
+                width: 30%;
+            }
+        }
+    </style>
+    <title>Create Task</title>
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <a href="/index.html"><strong id="timeOfDay">Good Afternoon</strong></a>
+            <div class="balance-section">
+                <h2>Balance : v$ 0.19</h2>
+                <a href="./profile.html" ><img src="./icons/person.svg" alt=""></a>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <form action="" id="taskbucket" class="formbucket">
+            <input type="text" placeholder="give your post a title" id="post-title" required><br>
+            <input type="text" placeholder="give your post a description" id="post-des" required><br>
+            <input type="number" placeholder="reward...v$ 10.00" id="post-cost" required><br>
+            <input type="submit" id="post" value="Post">
+        </form>
+    </div>
+    <script>
+        if(document.readyState == 'loading') {
+            document.addEventListener('DOMContentLoaded',ready)
+        }
+        else {
+            ready()
+        }
+
+        function ready(){
+            const ptitle = document.getElementById('post-title')
+            const pdes = document.getElementById('post-des')
+            const pcost = document.getElementById('post-cost')
+            const post = document.getElementById('post')
+            const taskArray = []
+
+            post.addEventListener('click', addPost);
+
+            function addPost() {
+                const taskDet = {
+                    title : "",
+                    description: "",
+                    reward: 0
+                }
+                const tit = ptitle.value;
+                const des = pdes.value;
+                const rewd = pcost.value;
+
+                taskDet.title = tit
+                taskDet.description = des
+                taskDet.reward = parseFloat(rewd);
+
+                taskArray.push(taskDet)
+                localStorage.setItem('task',JSON.stringify(taskArray))
+                
+            }
+
+        }
+    </script>
+</body>
+</html>

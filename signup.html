@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 1rem;
+            padding: 1rem;
+            display: grid;
+            grid-auto-flow: row;
+            grid-auto-rows: 10% 90%;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-family: sans-serif;
+            margin: 10px auto;
+            font-weight: 500;
+            text-shadow: 0px 3px 3px #dfdede;
+        }
+
+        .form{
+            background-color: rgb(245, 243, 240);
+            max-width: 450px;
+            height: max-content;
+            padding: 1rem;
+            margin: 1rem auto;
+            border-radius: 6px;
+            box-shadow: 0px 3px 3px;
+        }
+        .form >input {
+            width: 90%;
+            min-height: 50px;
+            padding: 10px;
+            margin-block: 1rem;
+            margin-inline: 1rem;
+            text-indent: 10px;
+        }
+        .form-input {
+            border: thin;
+            border-radius: 6px;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            box-shadow: 0px 3px 3px;
+        }
+        .form-input#submit {
+            background-color: #0066ff;
+            color: #f8f8f8;
+            box-shadow: 0px 3px 3px #111;
+            text-indent: -10px;
+        }
+        .form-input#submit:hover, .form-input#submit:focus {
+            background-color: #023e97;
+        }
+        p {
+            font-family: sans-serif;
+            font-size: 1rem;
+            text-align: center;
+            margin: auto;
+        }
+
+        .signup-verification {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 2rem;
+            padding: 1.5rem;
+            background-color: rgb(245, 243, 240);
+            max-width: 450px;
+            max-height: 450px;
+            border-radius: 6px;
+            box-shadow: 0px 3px 3px;
+        }
+         
+        .hideCard {
+            display: none;
+        }
+    </style>
+    <title>Create Account</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account</h1>
+        <form action="./index.html" class="form" id="form">
+            <input type="text" class="form-input" name="username" placeholder="@username_123.password" id="username" required>
+            <input type="email" class="form-input" name="email" placeholder="email@example.com" id="email" required>
+            <input type="password" class="form-input" name="password" placeholder="password" id="password" required>
+            <input type="submit" class="form-input" value="Create Account" id="submit">
+            <p>Already have an account? <a href="./login.html"><strong>Log In</strong></a></p>
+        </form>
+    </div>
+
+    <script>
+
+        if(document.readyState == 'loading') {
+            document.addEventListener('DOMContentLoaded',ready)
+        }
+        else {
+            ready()
+        }
+
+        function ready() {
+            const getValue = (id) => {
+                return document.getElementById(id).value
+            }
+
+            document.getElementById('form').addEventListener('submit',function (e) {
+                e.preventDefault()
+                username = getValue('username')
+                email = getValue('email')
+                password = getValue('password')
+
+                const useDet = {
+                    tusername: username,
+                    tpassword: password
+                }
+
+                const useArr = [useDet]
+                localStorage.setItem('loginCred', JSON.stringify(useArr))
+
+                setTimeout(() => {
+                    document.querySelector('.container').classList.add('hideCard')
+                    creatAccount()
+                },1000)
+
+                setTimeout(() => {
+                    document.getElementById('signup-msg').textContent = 'redirecting you now'
+                    setTimeout(() => {
+                        window.location.href = './login.html';
+
+                    },1000)
+                },5000)                
+            })
+
+            function creatAccount() {
+                const signupver = document.createElement('div')
+                signupver.classList.add('signup-verification')
+                signupver.innerHTML = `
+                <p id="signup-msg">... Creating account now ...</p>
+                `
+                document.querySelector('body').append(signupver)
+            }
+
+        }
+
+
+    </script>
+</body>
+</html>

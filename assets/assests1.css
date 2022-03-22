@@ -1,0 +1,145 @@
+:root {
+    --box-shadow: -1px 3px 3px #111111;
+    --card-background: #0096aa;
+    --background-color: #e7e7e7;
+    --card-padding: 0.7rem 1.2rem;
+    --card-margin: 0.5rem 0.8rem;
+    --box-padding: 1rem 1.5rem;
+    --box-margin: 1rem 0.5rem;
+    --button-border: thin;
+    --card-border: 1px solid #e0dede;
+    --boder-radius: 10px;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-family: sans-serif;
+}
+header a{
+    text-decoration: none;
+    color: inherit;
+}
+header li {
+    list-style: none;
+}
+
+header {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 1px;
+    padding: 5px;
+    box-shadow: 0px 3px 3px #111111;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    /* border-radius: var(--boder-radius); */
+    /* box-shadow: var(--box-shadow); */
+}
+.banner strong {
+    font-size: 2rem;
+    font-weight: 300; 
+    cursor: pointer;
+}
+
+.balance-section {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10px;
+    font-size: 14px;
+    margin-right: 1rem;
+}
+.balance-section >h2{
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 300; 
+}
+.balance-section >h2:hover,.balance-section >h2:focus {
+    text-decoration: underline;
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+}
+.balance-section > img {
+    width: 21px;
+    background-color: #e0dede;
+    border-radius: 50px;
+}
+.balance-section > img:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.navigation {
+    min-width: 60vw;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.navigation > nav {
+    display: flex;
+    justify-content: space-between;
+}
+nav li {
+   margin-right: 3px;
+   padding: 5px;
+
+}
+
+nav li a.active {
+    padding: 5px;
+    font-size: 2ch;
+    transform: scale(1.1);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--boder-radius);
+    transition: all 0.5s ease;
+}
+
+.container {
+    display: grid;
+    grid-auto-flow: column;
+    height: 100vh;
+}
+
+.feed {
+    border-right: 1px solid;
+    padding: 1rem 10px;
+    display: grid;
+    gap: 1em;
+    overflow-y: scroll;
+}
+
+.card {
+    border-top-left-radius: 1rem;
+    background-color: #00454e;
+    color: #e0dede;
+    padding: 10px;
+    width: 80%;
+    height: max-content;
+    margin: 0 auto;
+    border-bottom: 1px solid #e0dede;
+    cursor: pointer;
+}
+.card:hover {
+    transform: scale(1.01);
+    border-radius: 1rem;
+    margin: 5px auto;
+}
+
+.admin {
+    background-color: aqua;
+    padding: 1rem 10px;
+    margin: 10px;
+}
