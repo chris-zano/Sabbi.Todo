@@ -19,7 +19,7 @@
             padding: 1rem;
             border: thin;
             border-radius: 1rem;
-            box-shadow: 1px 3px 3px #111;
+            box-shadow: 1px 3px 3px rgb(10, 10, 10);
         }
 
         header {
@@ -36,10 +36,10 @@
             display: flex;
             justify-content: space-between;
             padding: 5px;
+            text-indent: 1rem;
         }
-        .banner strong {
-            font-size: 2rem;
-            font-weight: 300; 
+        .banner strong img {
+            transform: rotate(180deg);
             cursor: pointer;
         }
 
@@ -76,7 +76,15 @@
             font-size: 1.5rem;
 
         }
-        #post-title,#post-des,#post-cost{
+
+        .formbucket {
+            background-color: #464646;
+            background-image: url('https://th.bing.com/th/id/R.b2851ddc03c6ca3e305270f67da322f8?rik=jbFIAoW15cbPGg&pid=ImgRaw&r=0');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-blend-mode: multiply;
+        }
+        #post-title{
             width: 50%;
             height: 50px;
             margin: 1rem auto;
@@ -84,16 +92,51 @@
             border: thin;
             border-radius: 1rem;
             box-shadow: 0px 3px 3px;
+            background-color: #ffffffa1;
+
         }
-        
-        #post{
-            background-color: #2f89ff;
-            width: 10%;
-            height: 45px;
+        #post-cost {
+            width: 20%;
+            height: 50px;
             margin: 1rem auto;
+            text-indent: 1rem;
             border: thin;
             border-radius: 1rem;
-            box-shadow: 1px 3px 3px #111111;
+            box-shadow: 0px 3px 3px;
+        }
+        #post-title {
+            height: 250px;
+            padding: 1rem;
+        }
+
+        #post-file {
+            display: none;
+        }
+
+        .buttons {
+            display: inline-block;
+            margin: 1rem auto;
+        }
+
+        .file-label {
+            background-color: #727477;
+            padding: 1rem;
+            margin-right: 10px;
+            border: thin;
+            border-radius: 1rem;
+            box-shadow: 1px 3px 3px #111;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        #post{
+            background-color: #2f89ff;
+            width: 100px;
+            padding: 1rem;
+            margin-left: 10px;
+            border: thin;
+            border-radius: 1rem;
+            box-shadow: 1px 3px 3px #111;
             color: white;
             font-size: 1.2rem;
         }
@@ -101,7 +144,14 @@
             background-color: #1379ff;
         }
         @media screen and (max-width:500px) {
-            #post-title,#post-des,#post-cost{
+            .banner strong {
+                font-size: 1rem;
+                font-weight: 300; 
+            }
+            .balance-section {
+                display: none;
+            }
+            #post-title{
                 width: 70%;
                 height: 70%;
                 margin: 1rem auto;
@@ -111,9 +161,19 @@
                 box-shadow: 1px 3px 3px;
                 font-size: 1rem;
             }
-            #post{
-                background-color: #2f89ff;
-                width: 30%;
+            #post-cost {
+                width: 50%;
+                height: 50px;
+                margin: 1rem auto;
+                text-indent: 1rem;
+                border: thin;
+                border-radius: 0.5rem;
+                box-shadow: 1px 3px 3px;
+                font-size: 1rem;
+            }
+            #post-title {
+                height: 250px;
+                padding: 10px 0;
             }
         }
     </style>
@@ -122,7 +182,7 @@
 <body>
     <header>
         <div class="banner">
-            <a href="/index.html"><strong id="timeOfDay">Good Afternoon</strong></a>
+            <a href="/index.html"><strong id="timeOfDay"><img src="./icons/arrow-right-circle.svg" alt="" width="30px"></strong></a>
             <div class="balance-section">
                 <h2>Balance : v$ 0.19</h2>
                 <a href="./profile.html" ><img src="./icons/person.svg" alt=""></a>
@@ -131,30 +191,39 @@
     </header>
     <div class="container">
         <form action="" id="taskbucket" class="formbucket">
-            <input type="text" placeholder="give your post a title" id="post-title" required><br>
-            <input type="text" placeholder="give your post a description" id="post-des" required><br>
+            <textarea placeholder="add a task description" id="post-title" required></textarea><br>
             <input type="number" placeholder="reward...v$ 10.00" id="post-cost" required><br>
-            <input type="submit" id="post" value="Post">
+            <input type="file" placeholder="give your post a description" id="post-file"><br>
+            <div class="buttons">
+                <label for="post-file" class="file-label" id="file-label">Add a file</label>
+                <button type="submit" id="post">Post</button>
+            </div>
         </form>
     </div>
-    <script>
+    <script type="module">
         if(document.readyState == 'loading') {
             document.addEventListener('DOMContentLoaded',ready)
         }
         else {
             ready()
         }
-
-        function ready(){
+            function ready(){
             const ptitle = document.getElementById('post-title')
-            const pdes = document.getElementById('post-des')
+            const pdes = document.getElementById('post-file')
             const pcost = document.getElementById('post-cost')
             const post = document.getElementById('post')
             const taskArray = []
 
+
+            pdes.addEventListener('click', (e) => {
+                e.preventDefault()
+                alert('cannot add a file at this moment')
+            })
+
             post.addEventListener('click', addPost);
 
-            function addPost() {
+            function addPost(e) {
+                e.preventDefault()
                 const taskDet = {
                     title : "",
                     description: "",
@@ -163,16 +232,14 @@
                 const tit = ptitle.value;
                 const des = pdes.value;
                 const rewd = pcost.value;
-
+            
                 taskDet.title = tit
                 taskDet.description = des
                 taskDet.reward = parseFloat(rewd);
 
                 taskArray.push(taskDet)
                 localStorage.setItem('task',JSON.stringify(taskArray))
-                
             }
-
         }
     </script>
 </body>
