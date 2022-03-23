@@ -27,8 +27,7 @@ console.log(taskDet)
             <span class="time_posted">2h</span>
         </div>
         <div class="content">
-            <h2 class="task-title">${title}</h2>
-            <p>${description} </p>
+            <p class="task-title">${title}</p>
         </div>
         <div class="reward">
             <p>Reward : v$ ${reward}</p>
@@ -41,6 +40,6 @@ console.log(taskDet)
     for(var i= 0; i < card.length; i++){
         var cardClicked = card[i]
         cardClicked.addEventListener('click',(e) => {
-            console.log(cardClicked);
+            
         })
     }

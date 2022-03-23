@@ -104,13 +104,40 @@ nav li a.active {
     transform: scale(1.1);
     box-shadow: var(--box-shadow);
     border-radius: var(--boder-radius);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
+}
+
+main {
+    height: 100vh;
 }
 
 .container {
     display: grid;
     grid-auto-flow: column;
     height: 100vh;
+}
+
+.addtaskbtn {
+    background-color: rgb(0, 112, 218);
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    top: 550px;
+    right: 25px;
+    margin:0 auto;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 3px #111;
+}
+.addtaskbtn > h2 {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    font-size: 2.5rem;
+    color: aliceblue;
+    text-shadow: 0px 3px 3px #111;
 }
 
 .feed {
@@ -142,4 +169,34 @@ nav li a.active {
     background-color: aqua;
     padding: 1rem 10px;
     margin: 10px;
+}
+
+footer {
+    background-color: #202020;
+    color: #e0dede;
+}
+.footer-section {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid #0e0e0e;
+}
+
+.footer-nav li {
+    line-height: 5ch;
+    width: max-content;
+    font-weight: 300;
+}
+
+.footer-nav li:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.copyright-section > p {
+    background-color: #3a3a3a;
+    text-align: center;
+    padding: 1rem;
 }

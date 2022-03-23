@@ -4,55 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./mobile.css">
+    <link rel="stylesheet" href="./style2.css">
+    <link rel="stylesheet" href="./style1.css">
     <title>Sabbi.com</title>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>Sabbi</h1>
+        <div class="banner">
+            <a href="/index.html"><strong id="timeOfDay">Tabbi</strong></a>
+            <div class="balance-section">
+                <h2>Balance : v$ 0.19</h2>
+                <a href="#" id="profile"><img src="/icons/person.svg" alt="">
+                </a>
+            </div>
         </div>
-        <div class="nav">
-            <nav class="nav-bar">
-                <ul>
-                    <li><a href="#" id="profile">Profile</a></li>
-                    <li><a href="#" id="addtask">Add Tasks</a></li>
-                </ul>
+        <div class="navigation">
+            <nav>
+                <li><a href="#" class="active nav-link" >Trending</a></li>
+                <li><a href="#" class="nav-link">Latest</a></li>
+                <li><a href="#" class="nav-link">Recommendations</a></li>
+                <li><a href="#" class="nav-link">Following</a></li>
             </nav>
-        </div>
-        <div class="search-box">
-            <input type="text" id="search-bar" placeholder="search">
-            <img src="./icons/search.svg" alt="">
-        </div>
-        <div class="balance-section">
-            <h2>Balance : v$ 0.19</h2>
         </div>
     </header>
     <main>
         <div class="container">
-            <div class="explore section">
-                <div class="trending" id="trending">
-                    <h2 class="section-title title"><a href="./assets/assets.html" id="Trending" >Trending</a></h2>
-                    <div class="box">
-                    </div>
-                </div>
-                <div class="latest" id="latest">
-                    <h2 class="section-title title"><a href="./assets/assets.html" id="Latest">Latest</a></h2>
-                    <div class="box ">
-                    </div>
-                </div>
-            </div>
-            <div class="recommendations section " id="recommendations">
-                <h2 class="section-title title"><a href="./assets/assets.html" id="Recommendations">Recommendations</a></h2>
-                <div class="box">
-                </div>
-            </div>
-            <div class="following section " id="following">
-                <h2 class="section-title title"><a href="./assets/assets.html" id="Following">Following</a></h2>
-                <div class="box">
-                </div>
-            </div>
+            <section class="feed" id="feed">
+                <a href="#" class="addtaskbtn" id="addtask"><h2>+</h2></a>
+            </section>
+            <section class="admin">
+            </section>
         </div>
     </main>
     <footer>
@@ -132,7 +113,24 @@
 
 
     </script>
-    <script src="./tasks.js"></script>
+        <script>
+            const navLink = document.querySelector('nav');
+            navLink.addEventListener('click',(e) => {
+                
+                if(e.target.classList.contains('nav-link')){
+                    if(e.target.classList.contains('active')){
+                        return 0
+                    }
+                    else {
+                        const isAcvtive = navLink.querySelector('.active')
+                        isAcvtive.classList.remove('active')
+                        e.target.classList.add('active')
+                    }
+                    
+                }
+            })
+        </script>
+    <script src="./assets.js"></script>
 
 </body>
 </html>
