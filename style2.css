@@ -149,14 +149,16 @@ main {
 }
 
 .card {
+    border: none;
     border-top-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     background-color: #00454e;
     color: #e0dede;
     padding: 10px;
-    width: 80%;
+    width: 95%;
+    box-shadow: 0px 3px 3px #111;   
     height: max-content;
     margin: 0 auto;
-    border-bottom: 1px solid #e0dede;
     cursor: pointer;
 }
 .card:hover {

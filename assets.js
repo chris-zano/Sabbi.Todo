@@ -12,7 +12,6 @@ function getFromStorage() {
 
 
 const taskDet = JSON.parse(getFromStorage());
-console.log(taskDet)
     for(var i =0; i <taskDet.length; i++){
         title = taskDet[i].title
         description = taskDet[i].description
@@ -40,6 +39,6 @@ console.log(taskDet)
     for(var i= 0; i < card.length; i++){
         var cardClicked = card[i]
         cardClicked.addEventListener('click',(e) => {
-            
+            return 0
         })
     }
