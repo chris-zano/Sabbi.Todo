@@ -4,19 +4,82 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        strong {
-            width: fit-content;
-            margin: auto;
-        } 
-    </style>
+    <link rel="stylesheet" href="./profile.css">
     <title>Profile</title>
 </head>
 <body>
-    <header></header>
-    <main>
-         <strong>This page is currently unavailable</strong>
-    </main>
-    <footer></footer>
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-img-container">
+                <img src="./icons/person-circle.svg" alt="profile_image" width="100px" height="100px">
+            </div>
+            <div class="profile-username-container">
+                <h2>@username_name.001</h2>
+            </div>
+        </div>
+        <div class="activity-container">
+            <div class="navbar">
+                <li id="wallet">Wallet</li>
+                <li id="activity">Activity</li>
+            </div>
+            <div class="activity-section">
+                <div class="wallet-tab " id="wallet-tab">
+                    <div class="balance-bar">
+                        <h2>Balance : v$ 0.19</h2>
+                    </div>
+                    <div class="action-btns">
+                        <button id="deposit">Deposit</button>
+                        <button id="withdraw">Withdraw</button>
+                    </div>
+                </div>
+                <div class="activity-tab" id="activity-tab">
+                    <div class="activity-details blue_tab">
+                        <p class="activity-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus nobis eveniet voluptas.</p>
+                        <p class="activity-reward"> Reward : v$20.00 </p>
+                        <p class="activity-status">pending</p>
+                    </div>
+                    <div class="activity-details green_tab">
+                        <p class="activity-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus nobis eveniet voluptas.</p>
+                        <p class="activity-reward"> Reward : v$20.00 </p>
+                        <p class="activity-status">pending</p>
+                    </div>
+                    <div class="activity-details green_tab">
+                        <p class="activity-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus nobis eveniet voluptas.</p>
+                        <p class="activity-reward"> Reward : v$20.00 </p>
+                        <p class="activity-status">pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if(document.readyState == 'loading') {
+            document.addEventListener('DOMContentLoaded',ready)
+        }
+        else {
+            ready()
+        }
+
+        function ready() {
+            document.getElementById('activity-tab').classList.add('hide-section')
+            document.getElementById('wallet').classList.add('active-nav')
+            
+
+
+            document.getElementById('wallet').addEventListener('click',(e) => {
+                document.getElementById('activity').classList.remove('active-nav')
+                document.getElementById('activity-tab').classList.add('hide-section')
+                document.getElementById('wallet-tab').classList.remove('hide-section')
+                e.target.classList.add('active-nav')
+            })
+            document.getElementById('activity').addEventListener('click',(e) => {
+                document.getElementById('wallet').classList.remove('active-nav')
+                document.getElementById('wallet-tab').classList.add('hide-section')
+                document.getElementById('activity-tab').classList.remove('hide-section')
+                e.target.classList.add('active-nav')
+            })
+        }
+        
+    </script>
 </body>
 </html>

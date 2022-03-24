@@ -113,23 +113,23 @@
 
 
     </script>
-        <script>
-            const navLink = document.querySelector('nav');
-            navLink.addEventListener('click',(e) => {
-                
-                if(e.target.classList.contains('nav-link')){
-                    if(e.target.classList.contains('active')){
-                        return 0
-                    }
-                    else {
-                        const isAcvtive = navLink.querySelector('.active')
-                        isAcvtive.classList.remove('active')
-                        e.target.classList.add('active')
-                    }
-                    
+    <script>
+        const navLink = document.querySelector('nav');
+        navLink.addEventListener('click',(e) => {
+            
+            if(e.target.classList.contains('nav-link')){
+                if(e.target.classList.contains('active')){
+                    return 0
                 }
-            })
-        </script>
+                else {
+                    const isAcvtive = navLink.querySelector('.active')
+                    isAcvtive.classList.remove('active')
+                    e.target.classList.add('active')
+                }
+                
+            }
+        })
+    </script>
     <script src="./assets.js"></script>
 
 </body>

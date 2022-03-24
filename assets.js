@@ -39,6 +39,12 @@ const taskDet = JSON.parse(getFromStorage());
     for(var i= 0; i < card.length; i++){
         var cardClicked = card[i]
         cardClicked.addEventListener('click',(e) => {
-            return 0
+            const targetCard = e.target.parentElement.parentElement
+            
+            const tabbiUser = targetCard.querySelector('.user').textContent
+            const tabbiText = targetCard.querySelector('.task-title').textContent
+            const tabbiReward = targetCard.querySelector('.reward').textContent
+          
+            console.log(tabbiReward, tabbiText, tabbiUser);
         })
     }
