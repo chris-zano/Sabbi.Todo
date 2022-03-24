@@ -79,5 +79,4 @@ function ready() {
 
     }
 
-    const fs = require()
 }

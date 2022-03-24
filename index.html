@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style2.css">
-    <link rel="stylesheet" href="./style1.css">
+    <link rel="stylesheet" href="/styles/style2.css">
+    <link rel="stylesheet" href="/styles/style1.css">
     <title>Sabbi.com</title>
 </head>
 <body>
@@ -94,19 +94,19 @@
             getId('profile').addEventListener('click', () => {
                 const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
                 if(isUserLogged == true) {
-                    window.location.href = './profile.html'
+                    window.location.href = '/pages/profile.html'
                 }
                 else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = './login.html'
+                    window.location.href = '/pages/login.html'
                 }
             })
             getId('addtask').addEventListener('click', () => {
                 const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
                 if(isUserLogged == true) {
-                    window.location.href = './addtask.html'
+                    window.location.href = '/pages/addtask.html'
                 }
                 else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = './login.html'
+                    window.location.href = '/pages/login.html'
                 }
             })
         }
@@ -130,7 +130,7 @@
             }
         })
     </script>
-    <script src="./assets.js"></script>
+    <script src="/script/assets.js"></script>
 
 </body>
 </html>
