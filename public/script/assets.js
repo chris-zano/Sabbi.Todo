@@ -35,7 +35,7 @@ const taskDet = JSON.parse(getFromStorage());
             newCard.classList.add('card')
             newCard.innerHTML = `
             <div class="user">
-                <img src="/icons/person-circle.svg" alt="">
+                <img src="./icons/person-circle.svg" alt="">
                 <span class="useraccount">@user_name001</span>
                 <span class="time_posted">2h</span>
             </div>

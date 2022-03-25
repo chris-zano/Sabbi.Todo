@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/style2.css">
-    <link rel="stylesheet" href="/styles/style1.css">
+    <link rel="stylesheet" href="./styles/style2.css">
+    <link rel="stylesheet" href="./styles/style1.css">
     <title>Sabbi.com</title>
 </head>
 <body>
     <header>
         <div class="banner">
-            <a href="/index.html"><strong id="timeOfDay">Tabbi</strong></a>
+            <a href="./index.html"><strong id="timeOfDay">Tabbi</strong></a>
             <div class="balance-section">
                 <h2>Balance : v$ 0.19</h2>
-                <a href="#" id="profile"><img src="/icons/person.svg" alt="">
+                <a href="#" id="profile"><img src="./icons/person.svg" alt="">
                 </a>
             </div>
         </div>
@@ -94,19 +94,19 @@
             getId('profile').addEventListener('click', () => {
                 const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
                 if(isUserLogged == true) {
-                    window.location.href = '/pages/profile.html'
+                    window.location.href = './pages/profile.html'
                 }
                 else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = '/pages/login.html'
+                    window.location.href = './pages/login.html'
                 }
             })
             getId('addtask').addEventListener('click', () => {
                 const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
                 if(isUserLogged == true) {
-                    window.location.href = '/pages/addtask.html'
+                    window.location.href = './pages/addtask.html'
                 }
                 else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = '/pages/login.html'
+                    window.location.href = './pages/login.html'
                 }
             })
         }
@@ -130,7 +130,7 @@
             }
         })
     </script>
-    <script src="/script/assets.js"></script>
+    <script src="./script/assets.js"></script>
 
 </body>
 </html>
