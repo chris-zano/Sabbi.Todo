@@ -23,6 +23,7 @@
 html {
     font-family: sans-serif;
 }
+
 header a{
     text-decoration: none;
     color: inherit;
@@ -118,6 +119,7 @@ main {
 }
 
 .addtaskbtn {
+    text-decoration: none;
     background-color: rgb(0, 112, 218);
     width: 60px;
     height: 60px;
@@ -141,64 +143,32 @@ main {
 }
 
 .feed {
-    border-right: 1px solid;
+    border-right: none;
+    width: 90vw;
     padding: 1rem 10px;
     display: grid;
-    gap: 1em;
-    overflow-y: scroll;
+    overflow-y: unset;
+    margin: auto;
 }
 
 .card {
+    background-color: #02869742;
     border: none;
-    border-top-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    background-color: #00454e;
-    color: #e0dede;
+    border-radius: 1rem;
+    min-height: 220px;
+    color: #0f0f0f;
     padding: 10px;
-    width: 95%;
-    box-shadow: 0px 3px 3px #111;   
-    height: max-content;
-    margin: 0 auto;
-    cursor: pointer;
+    width: 100%;
+    margin: 5px auto;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 10% 70% 20%;
+    row-gap: 10px;
+    text-indent: 10px;
+    box-shadow: 0px 3px 3px #111;
 }
 .card:hover {
     transform: scale(1.01);
     border-radius: 1rem;
     margin: 5px auto;
-}
-
-.admin {
-    background-color: aqua;
-    padding: 1rem 10px;
-    margin: 10px;
-}
-
-footer {
-    background-color: #202020;
-    color: #e0dede;
-}
-.footer-section {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    padding: 1rem;
-    border-top: 1px solid #0e0e0e;
-}
-
-.footer-nav li {
-    line-height: 5ch;
-    width: max-content;
-    font-weight: 300;
-}
-
-.footer-nav li:hover {
-    text-decoration: underline;
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-}
-
-.copyright-section > p {
-    background-color: #3a3a3a;
-    text-align: center;
-    padding: 1rem;
 }

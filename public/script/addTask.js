@@ -18,17 +18,10 @@ const getValue = (id) => {
 const postBtn = getId('post')
 
 postBtn.addEventListener('click', getGeoLoc);
-
+getTime()
 function getTime() {
     const date = new Date()
-    const currentTime = date.getMinutes()
-    const elapsedTime = currentTime - date.getMinutes()
-    if(elapsedTime < 60) {
-        return elapsedTime + 'm';
-    }
-    else if(elapsedTime >= 60) {
-        return elapsedTime+ 'h'
-    }
+    return date.toLocaleDateString() +' '+ date.toLocaleTimeString()
             
 }
 

@@ -32,87 +32,8 @@
             <section class="feed" id="feed">
                 <a href="#" class="addtaskbtn" id="addtask"><h2>+</h2></a>
             </section>
-            <section class="admin">
-            </section>
         </div>
     </main>
-    <footer>
-        <div class="footer-section">
-            <div class="footer-nav">
-                <ul>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Sponsors</a></li>
-                    <li><a href="#">Report Fraud</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-            </div>
-        </div>
-        <div class="copyright-section">
-            <p>copyright 2022 - sabbi.inc</p>
-        </div>
-    </footer>
-    <script>
-        if(document.readyState == 'loading') {
-            document.addEventListener('DOMContentLoaded', ready)
-        }
-        else {
-            ready()
-        }
-
-        function ready() {
-            const useDet = {
-                    tusername: '',
-                    tpassword: '',
-                    isLoggedIn: false
-                }
-            const taskDet = {
-                title : "",
-                description: "",
-                reward: 0
-            }
-
-            const taskArray = [taskDet]
-            const useArr = [useDet]
-            
-
-            if(localStorage.loginCred == null || localStorage.loginCred == undefined) {
-                localStorage.loginCred
-                localStorage.setItem('loginCred', JSON.stringify(useArr))
-                localStorage.setItem('task',JSON.stringify(taskArray))
-            }
-            else{
-                // console.log(false); 
-            }
-
-            const getId = (id) => {
-                return document.getElementById(id);
-            }
-
-            getId('profile').addEventListener('click', () => {
-                const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
-                if(isUserLogged == true) {
-                    window.location.href = './pages/profile.html'
-                }
-                else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = './pages/login.html'
-                }
-            })
-            getId('addtask').addEventListener('click', () => {
-                const isUserLogged = JSON.parse(localStorage.getItem('loginCred'))[0].isLoggedIn
-                if(isUserLogged == true) {
-                    window.location.href = './pages/addtask.html'
-                }
-                else if(isUserLogged == null || isUserLogged == undefined || isUserLogged == false) {
-                    window.location.href = './pages/login.html'
-                }
-            })
-        }
-
-
-    </script>
     <script>
         const navLink = document.querySelector('nav');
         navLink.addEventListener('click',(e) => {
