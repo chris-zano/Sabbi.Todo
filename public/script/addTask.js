@@ -6,9 +6,6 @@
 // }
 
 // function ready() {
-import {writeFileJS} from './app.js'
-
-
 const getId = (id) => {
     return document.getElementById(id);
 }
@@ -16,68 +13,63 @@ const getValue = (id) => {
     return document.getElementById(id).value;
 }
 
-const postTitle = getValue('post-title');
-const taskReward = getValue('post-cost');
+
 
 const postBtn = getId('post')
 
-postBtn.addEventListener('click', getFormData);
+postBtn.addEventListener('click', getGeoLoc);
 
-function getFormData() {
-    //create the object
-    const xhr = new XMLHttpRequest();
-
-    //open the connection
-    xhr.open('GET', 'data.json', true);
-
-    //execute the function
-    xhr.onload = function () {
-        if(this.status === 200){
-            loadData(this.responseText);
-        }
+function getTime() {
+    const date = new Date()
+    const currentTime = date.getMinutes()
+    const elapsedTime = currentTime - date.getMinutes()
+    if(elapsedTime < 60) {
+        return elapsedTime + 'm';
     }
-
-    //send the request
-    xhr.send();
-
+    else if(elapsedTime >= 60) {
+        return elapsedTime+ 'h'
+    }
+            
 }
 
-function loadData(response) {
-    const newTabbi = {
-        id : "",
-        description : "",
-        reward : "",
-        status : 'unset'
-    }
+async function getGeoLoc(e) {
+    e.preventDefault()
 
     const postTitle = getValue('post-title');
-    const taskReward = parseFloat((getValue('post-cost')*100)/ 100);
-    const dataSet = JSON.parse(response)
-    const postId = dataSet.length + 1;
-    
-    
+    const taskReward = getValue('post-cost');
 
-    newTabbi.id = postId;
-    newTabbi.description = postTitle;
-    newTabbi.reward = taskReward;
+    const postInfo = {
+        description: '',
+        reward: '',
+        status: 'pending',
+        timeStamp :getTime()
+    }
 
-    dataSet.push(newTabbi)
-    localStorage.setItem('dataSet', JSON.stringify(dataSet))
-}
+    postInfo.description = postTitle;
+    postInfo.reward = taskReward;
+    console.log(postInfo);
 
-function postData() {
-    const jsonString = localStorage.getItem('dataSet')
-    console.log(jsonString)
-    const xhr = new XMLHttpRequest();
+    const options = {
+        method: 'POST',
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(postInfo)
+    }
 
-    //open the connection
-    xhr.open('POST','data.json', true);
+    const res = await fetch('/api', options);
+    const rjdata = await res.json()
+    console.log(rjdata);;
 
-    //setRequestHeader
+    // if('geolocation' in navigator) {
+    //     console.log('geolocation available');
+    //     navigator.geolocation.getCurrentPosition( async function(position) {
+    //         const lon = position.coords.longitude;
+    //         const lat = position.coords.latitude;
+    //         console.log(lat,lon);
 
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(jsonString)
-    
+    //         const data = {lat, lon};
+    //     })
 
 }
 

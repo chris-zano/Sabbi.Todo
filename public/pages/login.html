@@ -85,7 +85,7 @@
 <body>
     <div class="container">
         <h1>Log In</h1>
-        <form action="/public/index.html" class="form" id="form">
+        <form action="/index.html" class="form" id="form">
             <input type="text" class="form-input" name="username" placeholder="@username_" id="username" required>
             <input type="password" class="form-input" name="password" placeholder="password" id="password" required>
             <input type="submit" class="form-input" value="Login" id="submit">
@@ -121,7 +121,7 @@
                     logArr = [logCred]
                     localStorage.setItem('loginCred', JSON.stringify(logArr))
                     setTimeout(() => {
-                        location.href = '/public/index.html'
+                        location.href = '/index.html'
                     }, 3000)
                 }
                 else {
@@ -140,7 +140,6 @@
 
 
         }
-
 
     </script>
 </body>

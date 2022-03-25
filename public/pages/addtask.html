@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/styles/addtask.css">
+    <link rel="stylesheet" href="/styles/addtask.css">
     <title>Create Task</title>
 </head>
 <body>
     <header>
         <div class="banner">
-            <a href="/public/index.html"><strong id="timeOfDay"><img src="/public/icons/arrow-right-circle.svg" alt="" width="30px"></strong></a>
+            <a href="/index.html"><strong id="timeOfDay"><img src="/icons/arrow-right-circle.svg" alt="" width="30px"></strong></a>
         </div>
     </header>
     <div class="container">
@@ -44,27 +44,27 @@
                 alert('cannot add a file at this moment')
             })
 
-            post.addEventListener('click', addPost);
+            // post.addEventListener('click', addPost);
 
-            function addPost(e) {
-                e.preventDefault()
-                const taskDet = {
-                    title : "",
-                    description: "",
-                    reward: 0
-                }
-                const tit = ptitle.value;
-                const des = pdes.value;
-                const rewd = pcost.value;
+            // function addPost(e) {
+            //     e.preventDefault()
+            //     const taskDet = {
+            //         title : "",
+            //         description: "",
+            //         reward: 0
+            //     }
+            //     const tit = ptitle.value;
+            //     const des = pdes.value;
+            //     const rewd = pcost.value;
             
-                taskDet.title = tit
-                taskDet.reward = parseFloat(rewd);
+            //     taskDet.title = tit
+            //     taskDet.reward = parseFloat(rewd);
 
-                taskArray.push(taskDet)
-                localStorage.setItem('task',JSON.stringify(taskArray))
-            }
+            //     taskArray.push(taskDet)
+            //     localStorage.setItem('task',JSON.stringify(taskArray))
+            // }
         }
     </script>
-    <script src="/public/script/addTask.js" type="module"></script>
+    <script src="/script/addTask.js" type="module"></script>
 </body>
 </html>
