@@ -1,0 +1,29 @@
+{
+  "name": "sabbi.todo",
+  "version": "1.0.0",
+  "description": "This is an app where users identity are anonymous,also you can get people to do stuff for you and pay them directly through the app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chris-zano/Sabbi.Todo.git"
+  },
+  "keywords": [
+    "anonymous",
+    "market",
+    "transaction",
+    "todo",
+    "dark-web"
+  ],
+  "author": "Christian Solomon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chris-zano/Sabbi.Todo/issues"
+  },
+  "homepage": "https://github.com/chris-zano/Sabbi.Todo#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
