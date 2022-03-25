@@ -12,7 +12,7 @@ app.use(express.json({limit: '10mb'}));
 app.post('/api', (req, res) => {
     const body = req.body
     const date = new Date()
-    database.push(body)
+    database.insert(body)
     console.log(database);
     res.json({
         status: 'success',
