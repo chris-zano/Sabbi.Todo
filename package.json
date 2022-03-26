@@ -2,7 +2,7 @@
   "name": "sabbi.todo",
   "version": "1.0.0",
   "description": "This is an app where users identity are anonymous,also you can get people to do stuff for you and pay them directly through the app",
-  "main": "index.html",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
   "bugs": {
     "url": "https://github.com/chris-zano/Sabbi.Todo/issues"
   },
+  "homepage": "https://github.com/chris-zano/Sabbi.Todo#index.html",
   "dependencies": {
     "express": "^4.17.3",
     "nedb": "^1.8.0"
