@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/chris-zano/Sabbi.Todo/issues"
   },
-  "homepage": "https://github.com/chris-zano/Sabbi.Todo#readme",
   "dependencies": {
     "express": "^4.17.3",
     "nedb": "^1.8.0"
