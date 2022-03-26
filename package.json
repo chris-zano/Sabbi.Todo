@@ -2,7 +2,7 @@
   "name": "sabbi.todo",
   "version": "1.0.0",
   "description": "This is an app where users identity are anonymous,also you can get people to do stuff for you and pay them directly through the app",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
