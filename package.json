@@ -8,7 +8,7 @@
     "start": "index.js",
     "build": "webpack"
   },
-  "repository": {
+"repository": {
     "type": "git",
     "url": "git+https://github.com/chris-zano/Sabbi.Todo.git"
   },
