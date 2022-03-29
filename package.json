@@ -4,7 +4,10 @@
   "description": "This is an app where users identity are anonymous,also you can get people to do stuff for you and pay them directly through the app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "ng build",
+    "heroku-postbuild": "ng build --prod"
   },
   "repository": {
     "type": "git",
@@ -26,5 +29,8 @@
   "dependencies": {
     "express": "^4.17.3",
     "nedb": "^1.8.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
