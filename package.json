@@ -4,8 +4,8 @@
   "description": "This is an app where users identity are anonymous,also you can get people to do stuff for you and pay them directly through the app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "index.js",
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "build": "webpack"
   },
 "repository": {
@@ -25,11 +25,14 @@
     "url": "https://github.com/chris-zano/Sabbi.Todo/issues"
   },
   "dependencies": {
+    "@heroku-cli/plugin-buildpacks": "^7.54.0",
+    "@heroku/buildpack-registry": "^1.0.1",
     "express": "^4.17.3",
     "heroku": "^7.60.0",
     "nedb": "^1.8.0"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm" : "8.x"
   }
 }
