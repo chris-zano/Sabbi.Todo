@@ -28,7 +28,6 @@ app.post('/api', (req, res) => {
     const body = req.body
     const date = new Date()
     database.insert(body)
-    console.log(database);
     res.json({
         status: 'success',
         runtime: date.getMilliseconds() + 'ms'

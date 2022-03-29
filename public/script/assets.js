@@ -15,7 +15,6 @@ function getFromStorage() {
 async function getData() {
     const response = await fetch('/api');
     const data = await response.json()
-    console.log(data)
 
     if(data.length == 0 ) {
         const newCard = document.createElement('div');
@@ -45,7 +44,7 @@ async function getData() {
                 <p class="task-title">${description}</p>
             </div>
             <div class="reward">
-                <p>Reward : v$ ${reward}</p>
+                <p class="task-reward">Reward : v$ ${reward}</p>
             </div>
             `;
             document.getElementById('feed').append(newCard);
@@ -57,42 +56,47 @@ async function getData() {
 
 
 
-const card = document.getElementsByClassName('card');
-for(var i= 0; i < card.length; i++){
-    var cardClicked = card[i]
-    cardClicked.addEventListener('click',(e) => {
-        const targetCard = e.target.parentElement.parentElement
+const card = document.querySelector('.feed');
+card.addEventListener('click',(e) => {
+    if(e.target.parentElement.classList.contains('card')) {
+        cardClicked = e.target.parentElement
+        console.log(cardClicked);
         
-        const tabbiUser = targetCard.querySelector('.user').textContent
-        const tabbiText = targetCard.querySelector('.task-title').textContent
-        const tabbiReward = targetCard.querySelector('.reward').textContent
+        const username = cardClicked.querySelector('.useraccount').textContent
+        const cardDes = cardClicked.querySelector('.task-title').textContent
+        const cardRwd = cardClicked.querySelector('.task-reward').textContent
         
-        console.log(tabbiReward, tabbiText, tabbiUser);
-    })
-}
+        const objCard = {
+            user : username,
+            des: cardDes,
+            reward : cardRwd
+        }
+
+        localStorage.setItem('objCard', JSON.stringify(objCard))
+        setTimeout(() => {
+            window.location = '/pages/tabbi.html'
+        }, 1500);
+    }
+    else if(e.target.parentElement.parentElement.classList.contains('card')){
+        cardClicked = e.target.parentElement.parentElement
+        console.log(cardClicked);  
+    }
+})
 
 const useDet = {
     tusername: '',
     tpassword: '',
     isLoggedIn: false
 }
-const taskDet = {
-title : "",
-description: "",
-reward: 0
-}
 
-const taskArray = [taskDet]
 const useArr = [useDet]
 
 
 if(localStorage.loginCred == null || localStorage.loginCred == undefined) {
-localStorage.loginCred
 localStorage.setItem('loginCred', JSON.stringify(useArr))
-localStorage.setItem('task',JSON.stringify(taskArray))
 }
 else{
-// console.log(false); 
+console.log('error, cannot log user in');
 }
 
 const getId = (id) => {
