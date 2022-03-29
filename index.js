@@ -4,7 +4,7 @@ const DataStore = require('nedb')
 const app = express();
 
 const port = process.env.PORT || 3000
-app.listen('3000', () => { console.log(`listening to port ${port} `); });
+app.listen(port, () => { console.log(`listening to port ${port} `); });
 
 const database = new DataStore('database.db')
 database.loadDatabase();
