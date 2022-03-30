@@ -50,7 +50,6 @@ async function getData() {
             <small class="card-id" >${id}</small>
             `;
             document.getElementById('feed').append(newCard);
-            console.log(id);
         }
     }
 }
@@ -78,7 +77,7 @@ card.addEventListener('click',(e) => {
 
         localStorage.setItem('objCard', JSON.stringify(objCard))
         setTimeout(() => {
-            window.location = '/pages/tabbi.html'
+            window.location = '../pages/tabbi.html'
         }, 1500);
     }
     else if(e.target.parentElement.parentElement.classList.contains('card')){
@@ -95,7 +94,7 @@ card.addEventListener('click',(e) => {
 
         localStorage.setItem('objCard', JSON.stringify(objCard))
         setTimeout(() => {
-            window.location = '/pages/tabbi.html'
+            window.location = '../pages/tabbi.html'
         }, 1500); 
     }
 })

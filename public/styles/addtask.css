@@ -72,7 +72,7 @@ a{
 
 .formbucket {
     background-color: #464646;
-    background-image: url('/icons/addtabbi_bgimg.jpg');
+    background-image: url('../icons/addtabbi_bgimg.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-blend-mode: multiply;

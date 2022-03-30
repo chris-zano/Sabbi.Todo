@@ -172,3 +172,6 @@ main {
     border-radius: 1rem;
     margin: 5px auto;
 }
+small {
+    display: none;
+}
