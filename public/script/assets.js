@@ -31,6 +31,7 @@ async function getData() {
             description = data[i].description
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
+            id = data[i]._id
     
             const newCard = document.createElement('div');
             newCard.classList.add('card')
@@ -46,8 +47,10 @@ async function getData() {
             <div class="reward">
                 <p class="task-reward">Reward : v$ ${reward}</p>
             </div>
+            <small class="card-id" >${id}</small>
             `;
             document.getElementById('feed').append(newCard);
+            console.log(id);
         }
     }
 }
@@ -60,8 +63,26 @@ const card = document.querySelector('.feed');
 card.addEventListener('click',(e) => {
     if(e.target.parentElement.classList.contains('card')) {
         cardClicked = e.target.parentElement
-        console.log(cardClicked);
         
+        const username = cardClicked.querySelector('.useraccount').textContent
+        const cardDes = cardClicked.querySelector('.task-title').textContent
+        const cardRwd = cardClicked.querySelector('.task-reward').textContent
+        const cardId = cardClicked.querySelector('.card-id').textContent
+        
+        const objCard = {
+            user : username,
+            des: cardDes,
+            reward : cardRwd,
+            id : cardId
+        }
+
+        localStorage.setItem('objCard', JSON.stringify(objCard))
+        setTimeout(() => {
+            window.location = '/pages/tabbi.html'
+        }, 1500);
+    }
+    else if(e.target.parentElement.parentElement.classList.contains('card')){
+        cardClicked = e.target.parentElement.parentElement
         const username = cardClicked.querySelector('.useraccount').textContent
         const cardDes = cardClicked.querySelector('.task-title').textContent
         const cardRwd = cardClicked.querySelector('.task-reward').textContent
@@ -75,11 +96,7 @@ card.addEventListener('click',(e) => {
         localStorage.setItem('objCard', JSON.stringify(objCard))
         setTimeout(() => {
             window.location = '/pages/tabbi.html'
-        }, 1500);
-    }
-    else if(e.target.parentElement.parentElement.classList.contains('card')){
-        cardClicked = e.target.parentElement.parentElement
-        console.log(cardClicked);  
+        }, 1500); 
     }
 })
 
@@ -96,7 +113,6 @@ if(localStorage.loginCred == null || localStorage.loginCred == undefined) {
 localStorage.setItem('loginCred', JSON.stringify(useArr))
 }
 else{
-console.log('error, cannot log user in');
 }
 
 const getId = (id) => {

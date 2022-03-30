@@ -170,4 +170,7 @@
         margin: 5px auto;
     }
     
+    small {
+        display: none;
+    }
 }
