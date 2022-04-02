@@ -21,9 +21,9 @@ nav > a > img {
     transform: rotate(180deg);
 }
 .container {
-    background-color: #3c94af;
+    background-color: #3c94af00;
     margin-top: 2rem;
-    padding: 10px;
+    padding: 1rem 1rem;
     width: 95vw;
     height: 450px;
     margin-inline: auto;

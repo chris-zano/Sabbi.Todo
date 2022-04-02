@@ -57,12 +57,12 @@
         font-size: 1rem;
         margin-right: 1rem;
     }
-    .balance-section >h2{
+    .balance-section >a>h2{
         padding: 0 1rem;
         font-size: 1rem;
         font-weight: 300; 
     }
-    .balance-section >h2:hover,.balance-section >h2:focus {
+    .balance-section >a>h2:hover,.balance-section >a>h2:focus {
         text-decoration: underline;
         cursor: pointer;
         transform: scale(1.01);

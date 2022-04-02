@@ -6,6 +6,12 @@ else {
 }
 
 function ready() {
+    switchTabs()
+    getUsername()
+}
+
+
+function switchTabs() {
     document.getElementById('activity-tab').classList.add('hide-section')
     document.getElementById('wallet').classList.add('active-nav')
     
@@ -23,4 +29,8 @@ function ready() {
         document.getElementById('activity-tab').classList.remove('hide-section')
         e.target.classList.add('active-nav')
     })
+}
+
+function getUsername() {
+    document.getElementById('username').textContent = '@' + JSON.parse(localStorage.getItem('loginCred'))[0].tusername;
 }

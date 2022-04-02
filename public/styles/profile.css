@@ -99,7 +99,6 @@
     font-weight: 600;
 }
 #deposit:hover {
-    transform: scale(1.1);
     background-color: #002c8a;
 }
 #withdraw {
@@ -108,7 +107,6 @@
     font-weight: 600;
 }
 #withdraw:hover {
-    transform: scale(1.1);
     background-color: #124e00;
 }
 

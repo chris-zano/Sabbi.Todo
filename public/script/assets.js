@@ -32,13 +32,13 @@ async function getData() {
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
             id = data[i]._id
-    
+            const usersname = JSON.parse(localStorage.getItem('loginCred'))[0].tusername;
             const newCard = document.createElement('div');
             newCard.classList.add('card')
             newCard.innerHTML = `
             <div class="user">
                 <img src="./icons/person-circle.svg" alt="">
-                <span class="useraccount">@user_name001</span>
+                <span class="useraccount" id="username" >@${usersname} </span>
                 <span class="time_posted"> ${elapsedTime} </span>
             </div>
             <div class="content">
