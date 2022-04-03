@@ -71,24 +71,6 @@
             text-align: center;
             margin: auto;
         }
-
-        .signup-verification {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 2rem;
-            padding: 1.5rem;
-            background-color: rgb(245, 243, 240);
-            max-width: 450px;
-            max-height: 450px;
-            border-radius: 6px;
-            box-shadow: 0px 3px 3px;
-        }
          
         .hideCard {
             display: none;
@@ -118,49 +100,52 @@
         }
 
         function ready() {
-            const getValue = (id) => {
-                return document.getElementById(id).value
-            }
+            document.getElementById('form').addEventListener('submit',validateEmail)
+           
+                
 
-            document.getElementById('form').addEventListener('submit',function (e) {
-                e.preventDefault()
-                username = getValue('username')
-                email = getValue('email')
-                password = getValue('password')
 
-                const useDet = {
-                    tusername: username,
-                    tpassword: password
-                }
-
-                const useArr = [useDet]
-                localStorage.setItem('loginCred', JSON.stringify(useArr))
-
-                setTimeout(() => {
-                    document.querySelector('.container').classList.add('hideCard')
-                    creatAccount()
-                },1000)
-
-                setTimeout(() => {
-                    document.getElementById('signup-msg').textContent = 'redirecting you now'
-                    setTimeout(() => {
-                        window.location.href = './login.html';
-
-                    },1000)
-                },5000)                
-            })
-
-            function creatAccount() {
-                const signupver = document.createElement('div')
-                signupver.classList.add('signup-verification')
-                signupver.innerHTML = `
-                <p id="signup-msg">... Creating account now ...</p>
-                `
-                document.querySelector('body').append(signupver)
-            }
-
+            
         }
+        const getValue = (id) => {
+            return document.getElementById(id).value
+        }
+        function validateEmail (e) {
+            e.preventDefault()
+            username = getValue('username')
+            email = getValue('email')
+            password = getValue('password')
 
+            const useDet = {
+                tusername: username,
+                tpassword: password
+            }
+
+            const useArr = [useDet]
+            localStorage.setItem('loginCred', JSON.stringify(useArr))
+
+            setTimeout(() => {
+                document.querySelector('.container').classList.add('hideCard')
+                document.write('<p id="signup-msg">... Creating account now ...</p>')
+            },1000)
+
+            setTimeout(() => {
+                document.getElementById('signup-msg').textContent = 'redirecting you now';
+                setTimeout(() => {
+                    window.location.href = './login.html';
+
+                },1000)
+            },5000)                
+        }
+        
+        function creatAccount() {
+            const signupver = document.createElement('div')
+            signupver.classList.add('signup-verification')
+            signupver.innerHTML = `
+            <p id="signup-msg">... Creating account now ...</p>
+            `
+            document.querySelector('body').append(signupver)
+        }
 
     </script>
 </body>
