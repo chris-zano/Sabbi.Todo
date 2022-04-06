@@ -1,3 +1,5 @@
+//variables
+
 if(document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 }
@@ -5,17 +7,16 @@ else{
     ready()
 }
 
+const getfromStorage = localStorage.getItem('objCard');
+const tabbiObj = JSON.parse(getfromStorage);
 function ready() {
-    //variables
-    const getfromStorage = localStorage.getItem('objCard');
-    const tabbiObj = JSON.parse(getfromStorage);
-
-
-    createTabbi(tabbiObj)
-
+    createTabbi(tabbiObj);
     document.getElementById('submit-rqst').addEventListener('click',submitRequest);
 }
 
+const getValue = (id) => {
+    return document.getElementById(id).textContent;
+}
 
 function createTabbi(tabbiObj) {
     const newCard = document.createElement('div');
@@ -24,13 +25,41 @@ function createTabbi(tabbiObj) {
         <p id="reward">${tabbiObj.reward} </p>
         <p id="description">${tabbiObj.des} </p>
         <button type="submit" id="submit-rqst">Submit Request</button>
-        <small id="subs">13 submitted requests</small>
-        <small>9 denied submissions</small>
+        <small id="subreq">${parseInt(tabbiObj.submittedRequests)} submitted requests</small>
+        <small id="densubs">${tabbiObj.deniedRequests} denied submissions</small>
     `;
     document.querySelector('main').append(newCard);
+
 }
 
-function submitRequest() {
-    alert('your request is being processed for submission');
-    document.getElementById('subs').textContent = '14 submitted requests';
+async function submitRequest() {
+    getDetails(tabbiObj)
+    var subreq = tabbiObj.submittedRequests +=1;
+    localStorage.setItem('objCard',JSON.stringify(tabbiObj));
+
+    const tabbi = getValue('description')
+    const reward = getValue('reward')
+
+    const postInfo = {
+        tabbi: tabbi,
+        reward: reward,
+        subReq: subreq
+    }
+    console.log(postInfo);
+    const options = {
+        method: 'POST',
+        headers: {
+            "Content-Type" : "application/json"
+        },
+        body: JSON.stringify(postInfo)
+    }
+
+    const res = await fetch('/tabbisubmit', options);
+    const rjdata = await res.json()
+    console.log(rjdata);
+
+}
+
+function getDetails(tabbiObj) {
+    console.log(tabbiObj);
 }

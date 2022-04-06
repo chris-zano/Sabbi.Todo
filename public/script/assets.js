@@ -31,10 +31,10 @@ async function getData() {
             description = data[i].description
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
-            id = data[i]._id
             const usersname = JSON.parse(localStorage.getItem('loginCred'))[0].tusername;
-            const newCard = document.createElement('div');
-            newCard.classList.add('card')
+            const newCard = document.createElement('a');
+            newCard.classList.add('card');
+            newCard.href = '../pages/tabbi.html'
             newCard.innerHTML = `
             <div class="user">
                 <img src="./icons/person-circle.svg" alt="">
@@ -47,57 +47,24 @@ async function getData() {
             <div class="reward">
                 <p class="task-reward">Reward : v$ ${reward}</p>
             </div>
-            <small class="card-id" >${id}</small>
             `;
             document.getElementById('feed').append(newCard);
+            const username = newCard.querySelector('.useraccount').textContent
+            const cardDes = newCard.querySelector('.task-title').textContent
+            const cardRwd = newCard.querySelector('.task-reward').textContent
+            
+            const objCard = {
+                user : username,
+                des: cardDes,
+                reward : cardRwd,
+                submittedRequests:0,
+                deniedRequests:0
+            };
+        
+            localStorage.setItem('objCard', JSON.stringify(objCard));
         }
     }
 }
-
-
-
-
-
-const card = document.querySelector('.feed');
-card.addEventListener('click',(e) => {
-    if(e.target.parentElement.classList.contains('card')) {
-        cardClicked = e.target.parentElement
-        
-        const username = cardClicked.querySelector('.useraccount').textContent
-        const cardDes = cardClicked.querySelector('.task-title').textContent
-        const cardRwd = cardClicked.querySelector('.task-reward').textContent
-        const cardId = cardClicked.querySelector('.card-id').textContent
-        
-        const objCard = {
-            user : username,
-            des: cardDes,
-            reward : cardRwd,
-            id : cardId
-        }
-
-        localStorage.setItem('objCard', JSON.stringify(objCard))
-        setTimeout(() => {
-            window.location = '../pages/tabbi.html'
-        }, 1500);
-    }
-    else if(e.target.parentElement.parentElement.classList.contains('card')){
-        cardClicked = e.target.parentElement.parentElement
-        const username = cardClicked.querySelector('.useraccount').textContent
-        const cardDes = cardClicked.querySelector('.task-title').textContent
-        const cardRwd = cardClicked.querySelector('.task-reward').textContent
-        
-        const objCard = {
-            user : username,
-            des: cardDes,
-            reward : cardRwd
-        }
-
-        localStorage.setItem('objCard', JSON.stringify(objCard))
-        setTimeout(() => {
-            window.location = '../pages/tabbi.html'
-        }, 1500); 
-    }
-})
 
 const useDet = {
     tusername: '',

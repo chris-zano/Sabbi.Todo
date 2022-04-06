@@ -152,6 +152,7 @@ main {
 }
 
 .card {
+    text-decoration: none;
     background-color: #02869742;
     border: none;
     border-radius: 1rem;

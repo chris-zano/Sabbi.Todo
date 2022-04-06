@@ -52,17 +52,7 @@ async function getGeoLoc(e) {
 
     const res = await fetch('/api', options);
     const rjdata = await res.json()
-    console.log(rjdata);;
-
-    // if('geolocation' in navigator) {
-    //     console.log('geolocation available');
-    //     navigator.geolocation.getCurrentPosition( async function(position) {
-    //         const lon = position.coords.longitude;
-    //         const lat = position.coords.latitude;
-    //         console.log(lat,lon);
-
-    //         const data = {lat, lon};
-    //     })
+    console.log(rjdata);
 
 }
 
