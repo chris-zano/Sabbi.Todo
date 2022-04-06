@@ -45,6 +45,7 @@
     margin: auto 10px;
     text-align: center;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 #wallet {
     border-right: 1px solid;
@@ -92,6 +93,8 @@
     border: thin;
     border-radius: 6px;
     box-shadow: 0px 3px 3px #111;
+    cursor: pointer;
+
 }
 #deposit {
     background-color: #0051ff;
@@ -114,6 +117,7 @@
     display: grid;
     gap: 10px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .activity-details {
@@ -122,10 +126,10 @@
     box-shadow: 0px 3px 3px #111;
 }
 
-.blue_tab {
+.activity-details:nth-child(odd) {
     background-color: #008cff;
 }
-.green_tab {
+.activity-details:nth-child(even) {
     background-color: #7fffd4;
 }
 

@@ -25,8 +25,7 @@ function getTime() {
             
 }
 
-async function getGeoLoc(e) {
-    e.preventDefault()
+async function getGeoLoc() {
 
     const postTitle = getValue('post-title');
     const taskReward = getValue('post-cost');

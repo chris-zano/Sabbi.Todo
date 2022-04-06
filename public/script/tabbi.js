@@ -41,9 +41,11 @@ async function submitRequest() {
     const reward = getValue('reward')
 
     const postInfo = {
+        id:'',
         tabbi: tabbi,
         reward: reward,
-        subReq: subreq
+        subReq: subreq,
+        status:'pending'
     }
     console.log(postInfo);
     const options = {

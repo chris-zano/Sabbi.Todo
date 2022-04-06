@@ -32,9 +32,9 @@ async function getData() {
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
             const usersname = JSON.parse(localStorage.getItem('loginCred'))[0].tusername;
-            const newCard = document.createElement('a');
+            const newCard = document.createElement('div');
             newCard.classList.add('card');
-            newCard.href = '../pages/tabbi.html'
+            // newCard.href = '../pages/tabbi.html'
             newCard.innerHTML = `
             <div class="user">
                 <img src="./icons/person-circle.svg" alt="">
@@ -49,22 +49,45 @@ async function getData() {
             </div>
             `;
             document.getElementById('feed').append(newCard);
-            const username = newCard.querySelector('.useraccount').textContent
-            const cardDes = newCard.querySelector('.task-title').textContent
-            const cardRwd = newCard.querySelector('.task-reward').textContent
-            
-            const objCard = {
-                user : username,
-                des: cardDes,
-                reward : cardRwd,
-                submittedRequests:0,
-                deniedRequests:0
-            };
-        
-            localStorage.setItem('objCard', JSON.stringify(objCard));
         }
     }
 }
+
+
+document.getElementById('feed').addEventListener('click',(e)=> {
+    if(e.target.parentElement.classList.contains('card')){
+        const username = e.target.parentElement.querySelector('.useraccount').textContent
+        const cardDes = e.target.parentElement.querySelector('.task-title').textContent
+        const cardRwd = e.target.parentElement.querySelector('.task-reward').textContent
+        
+        const objCard = {
+            user : username,
+            des: cardDes,
+            reward : cardRwd,
+            submittedRequests:0,
+            deniedRequests:0
+        };
+        localStorage.setItem('objCard', JSON.stringify(objCard));
+        location.href = '../pages/tabbi.html'
+    }
+    else if(e.target.parentElement.parentElement.classList.contains('card')) {
+        const username = e.target.parentElement.parentElement.querySelector('.useraccount').textContent
+        const cardDes = e.target.parentElement.parentElement.querySelector('.task-title').textContent
+        const cardRwd = e.target.parentElement.parentElement.querySelector('.task-reward').textContent
+        
+        const objCard = {
+            user : username,
+            des: cardDes,
+            reward : cardRwd,
+            submittedRequests:0,
+            deniedRequests:0
+        };
+        localStorage.setItem('objCard', JSON.stringify(objCard));
+        location.href = '../pages/tabbi.html'
+    }
+})
+
+
 
 const useDet = {
     tusername: '',

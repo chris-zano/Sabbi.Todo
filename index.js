@@ -26,6 +26,17 @@ app.get('/api', (req, res) => {
         }
     })
 } )
+app.get('/tabbisubmit', (req, res) => {
+    dataHouse.find({},( err, data ) => {
+        if(err) {
+            res.end();
+            return;
+        }
+        else {
+            res.json(data)
+        }
+    })
+} )
 app.post('/tabbisubmit', (req, res) => {
   const body = req.body
   dataHouse.insert(body)
