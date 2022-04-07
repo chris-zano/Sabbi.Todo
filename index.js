@@ -6,13 +6,13 @@ const app = express();
 const port = process.env.PORT || 3000
 app.listen(port, () => { console.log(`listening to port ${port} `); });
 
-const database = new DataStore('database.db')
+const database = new DataStore('DataHouse/database.db')
 database.loadDatabase();
 
-const dataHouse = new DataStore('dataHouse.db')
+const dataHouse = new DataStore('DataHouse/dataHouse.db')
 dataHouse.loadDatabase();
 
-const userCredentials = new DataStore('dataLog.db')
+const userCredentials = new DataStore('DataHouse/dataLog.db')
 userCredentials.loadDatabase();
 
 app.use(express.static('public'));
