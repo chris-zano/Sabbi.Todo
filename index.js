@@ -12,6 +12,9 @@ database.loadDatabase();
 const dataHouse = new DataStore('dataHouse.db')
 dataHouse.loadDatabase();
 
+const userCredentials = new DataStore('dataLog.db')
+userCredentials.loadDatabase();
+
 app.use(express.static('public'));
 app.use(express.json({limit: '10mb'}));
 
@@ -37,11 +40,30 @@ app.get('/tabbisubmit', (req, res) => {
         }
     })
 } )
+app.get('/loginData', (req, res) => {
+    userCredentials.find({},( err, data ) => {
+        if(err) {
+            res.end();
+            return;
+        }
+        else {
+            res.json(data)
+        }
+    })
+} )
 app.post('/tabbisubmit', (req, res) => {
   const body = req.body
   dataHouse.insert(body)
   res.json({
       status: 'success',
+  });
+})
+app.post('/loginData', (req, res) => {
+  const body = req.body
+  userCredentials.insert(body)
+  res.json({
+      body :body,
+      status: 'success'
   });
 })
 

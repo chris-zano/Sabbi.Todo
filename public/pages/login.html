@@ -105,40 +105,40 @@
             const getValue = (id) => {
                 return document.getElementById(id).value;
             }
+            const getId = (id) => {
+                return document.getElementById(id);
+            }
 
-            document.getElementById('form').addEventListener('submit',function (e) {
-                e.preventDefault();
+            document.getElementById('form').addEventListener('submit',getData);
 
+            async function getData(e) {
+                e.preventDefault()
+                
                 const username = getValue('username');
                 const password = getValue('password');
+                
+                const response = await fetch('/loginData');
+                const data = await response.json()
 
-                const logCred = JSON.parse(localStorage.getItem('loginCred'))[0]
-                lUsername = logCred.tusername;
-                lPassword = logCred.tpassword;
+                for(let i=0; i<data.length; i++) {
+                    const item = data[i]
+                    if(item.tusername == username && item.tpassword == password) {
+                        const useDet = {
+                            username: username,
+                            isLoggedIn: true
+                        }
 
-                if(username == lUsername && password == lPassword) {
-                    logCred.isLoggedIn = true
-                    logArr = [logCred]
-                    localStorage.setItem('loginCred', JSON.stringify(logArr))
-                    setTimeout(() => {
-                        location.href = '/index.html'
-                    }, 3000)
-                }
-                else {
-                    if(lUsername == '' || lPassword == '') {
-                        alert('no such account found');
-                       setTimeout(function () {
-                        window.location.href = './signup.html';
-                       },500)
+                        const useArr = [useDet]
+                        localStorage.setItem('loginCred' , JSON.stringify(useArr))
+                        window.location.href = '../index.html'
                     }
                     else {
-                        alert('Wrong username or password')
+                        alert('Username or password Incorrect')
                     }
                 }
-                
-            })
+            }
 
-
+            
         }
 
     </script>
