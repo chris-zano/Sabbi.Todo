@@ -107,34 +107,7 @@
         const getValue = (id) => {
             return document.getElementById(id).value
         }
-        // function validateEmail (e) {
-        //     e.preventDefault()
-        //     username = getValue('username')
-        //     email = getValue('email')
-        //     password = getValue('password')
 
-        //     const useDet = {
-        //         tusername: username,
-        //         tpassword: password
-        //     }
-
-        //     const useArr = [useDet]
-        //     localStorage.setItem('loginCred', JSON.stringify(useArr))
-
-        //     setTimeout(() => {
-        //         document.querySelector('.container').classList.add('hideCard')
-        //         document.write('<p id="signup-msg">... Creating account now ...</p>')
-        //     },1000)
-
-        //     setTimeout(() => {
-        //         document.getElementById('signup-msg').textContent = 'redirecting you now';
-        //         setTimeout(() => {
-        //             window.location.href = './login.html';
-
-        //         },1000)
-        //     },5000)                
-        // }
-        
         async function CreateUser (e) {
             const date = new Date()
             e.preventDefault()
@@ -152,7 +125,6 @@
                 userID: userId
             }
             
-            console.log(useDet);
             const options = {
                 method: 'POST',
                 headers: {
@@ -163,7 +135,6 @@
 
             const res = await fetch('/loginData', options);
             const rjdata = await res.json()
-            console.log(rjdata);
         }
         
         function creatAccount() {

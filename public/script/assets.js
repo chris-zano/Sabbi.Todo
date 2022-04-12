@@ -31,14 +31,13 @@ async function getData() {
             description = data[i].description
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
-            const usersname = JSON.parse(localStorage.getItem('loginCred'))[0].tusername;
             const newCard = document.createElement('div');
             newCard.classList.add('card');
             // newCard.href = '../pages/tabbi.html'
             newCard.innerHTML = `
             <div class="user">
                 <img src="./icons/person-circle.svg" alt="">
-                <span class="useraccount" id="username" >@${usersname} </span>
+                <span class="useraccount" id="username" >@anonymousUser</span>
                 <span class="time_posted"> ${elapsedTime} </span>
             </div>
             <div class="content">

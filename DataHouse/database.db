@@ -1,0 +1,6 @@
+{"description":"Testing if the UID will be logged into the console","reward":"1000","status":"pending","timeStamp":"07/04/2022 13:12:57","_id":"idzepyOBxEqw14dv"}
+{"description":"Again Testing if the UID will be logged to the console","reward":"1500","status":"pending","timeStamp":"07/04/2022 13:13:43","_id":"pD2Km50tmfneK03c"}
+{"description":"Again Testing if the UID will be logged to the console 2","reward":"1550","status":"pending","timeStamp":"07/04/2022 13:14:07","_id":"zISTF9pa5jbNMGf7"}
+{"description":"    const resID = await fetch('/UIDapi');\n    const UID = await resID.json()\n    console.log(UID);","reward":"2010","status":"pending","timeStamp":0,"_id":"Bj5ojEdEWINd8sCQ"}
+{"description":"The ultimate Test :)","reward":"1200","status":"pending","timeStamp":"function getMilliseconds() { [native code] }chrdaded25","_id":"U85XBXaBP6xdZ6db"}
+{"description":"The ultimate Test :)","reward":"1200","status":"pending","timeStamp":"function getMilliseconds() { [native code] }chrdaded25","_id":"1N6iIwP133NAmE7D"}

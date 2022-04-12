@@ -18,28 +18,28 @@ const getValue = (id) => {
 const postBtn = getId('post')
 
 postBtn.addEventListener('click', getGeoLoc);
-getTime()
-function getTime() {
-    const date = new Date()
-    return date.toLocaleDateString() +' '+ date.toLocaleTimeString()
-            
-}
 
-async function getGeoLoc() {
 
+async function getGeoLoc(e) {
+
+    e.preventDefault()
     const postTitle = getValue('post-title');
+
     const taskReward = getValue('post-cost');
+    const resID = await fetch('/UIDapi');
+    const UID = await resID.json()
+
+    const date = new Date()
 
     const postInfo = {
         description: '',
         reward: '',
         status: 'pending',
-        timeStamp :getTime()
+        timeStamp : date.getMilliseconds + UID
     }
 
     postInfo.description = postTitle;
     postInfo.reward = taskReward;
-    console.log(postInfo);
 
     const options = {
         method: 'POST',
@@ -51,7 +51,7 @@ async function getGeoLoc() {
 
     const res = await fetch('/api', options);
     const rjdata = await res.json()
-    console.log(rjdata);
+    
 
 }
 

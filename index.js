@@ -51,6 +51,20 @@ app.get('/loginData', (req, res) => {
         }
     })
 } )
+app.get('/UIDapi', (req, res) => {
+    userCredentials.find({},( err, data ) => {
+        if(err) {
+            res.end();
+            return;
+        }
+        else {
+            for(var i=0; i< data.length; i++){
+                const id = data[i].userID
+                res.json(id)
+            }
+        }
+    })
+} )
 app.post('/tabbisubmit', (req, res) => {
   const body = req.body
   dataHouse.insert(body)
