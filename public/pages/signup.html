@@ -101,22 +101,24 @@
 
         function ready() {
             document.getElementById('form').addEventListener('submit',CreateUser)
-
-
         }
+
         const getValue = (id) => {
             return document.getElementById(id).value
         }
+        const getId = (id) => {
+            return document.getElementById(id)
+        }
 
-        async function CreateUser (e) {
-            const date = new Date()
+        async function CreateUser(e) {
             e.preventDefault()
+
             const username = getValue('username')
             const email = getValue('email')
             const password = getValue('password')
             const userId = 
-                username.slice(0,3) + email.slice((((email.length)/2)/2),((email.length)/2) -1)
-                + (date.getMilliseconds())
+            username.slice(0,3) + email.slice((((email.length)/2)/2),((email.length)/2) -1)
+            + (new Date().getMilliseconds())
             ;
             const useDet = {
                 tusername: username,
@@ -135,17 +137,28 @@
 
             const res = await fetch('/loginData', options);
             const rjdata = await res.json()
+
+            location.href = './login.html'
         }
         
-        function creatAccount() {
-            const signupver = document.createElement('div')
-            signupver.classList.add('signup-verification')
-            signupver.innerHTML = `
-            <p id="signup-msg">... Creating account now ...</p>
-            `
-            document.querySelector('body').append(signupver)
-        }
+        // async function getData() {
+        //     const response = await fetch('/checkLog');
+        //     const data = await response.json()
+            
+        //     for(var i=0; i < data.length; i++){
+        //         const literal = data[i];
+        //         const username = getValue('username');
+        //         const email = getValue('email');
 
+        //         if(literal.temail == email){
+        //             return false
+        //         }
+        //         else {
+        //             return true
+        //         }
+        //     }
+        // }
+    
     </script>
 </body>
 </html>

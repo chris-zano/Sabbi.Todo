@@ -17,25 +17,23 @@ const getValue = (id) => {
 
 const postBtn = getId('post')
 
-postBtn.addEventListener('click', getGeoLoc);
+postBtn.addEventListener('click', addTabbi);
 
 
-async function getGeoLoc(e) {
-
-    e.preventDefault()
+async function addTabbi() {
     const postTitle = getValue('post-title');
 
     const taskReward = getValue('post-cost');
     const resID = await fetch('/UIDapi');
     const UID = await resID.json()
-
-    const date = new Date()
+    const date =`${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`
 
     const postInfo = {
         description: '',
         reward: '',
         status: 'pending',
-        timeStamp : date.getMilliseconds + UID
+        timeStamp : date,
+        userID : UID
     }
 
     postInfo.description = postTitle;
@@ -51,8 +49,7 @@ async function getGeoLoc(e) {
 
     const res = await fetch('/api', options);
     const rjdata = await res.json()
-    
-
+    return rjdata
 }
 
 // }

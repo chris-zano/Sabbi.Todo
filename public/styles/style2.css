@@ -148,7 +148,7 @@ main {
     padding: 1rem 10px;
     display: grid;
     overflow-y: unset;
-    margin: auto;
+    margin:0 auto;
 }
 
 .card {
@@ -167,11 +167,7 @@ main {
     row-gap: 10px;
     text-indent: 10px;
     box-shadow: 0px 3px 3px #111;
-}
-.card:hover {
-    transform: scale(1.01);
-    border-radius: 1rem;
-    margin: 5px auto;
+    cursor: pointer;
 }
 small {
     display: none;

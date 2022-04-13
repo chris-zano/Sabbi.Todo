@@ -31,6 +31,7 @@ async function getData() {
             description = data[i].description
             reward = data[i].reward
             elapsedTime = data[i].timeStamp
+            dateSub = new Date().getHours()
             const newCard = document.createElement('div');
             newCard.classList.add('card');
             // newCard.href = '../pages/tabbi.html'
@@ -38,13 +39,13 @@ async function getData() {
             <div class="user">
                 <img src="./icons/person-circle.svg" alt="">
                 <span class="useraccount" id="username" >@anonymousUser</span>
-                <span class="time_posted"> ${elapsedTime} </span>
+                <span class="time_posted">${elapsedTime} </span>
             </div>
             <div class="content">
                 <p class="task-title">${description}</p>
             </div>
             <div class="reward">
-                <p class="task-reward">Reward : v$ ${reward}</p>
+                <p class="task-reward">Amount : v$ ${reward}</p>
             </div>
             `;
             document.getElementById('feed').append(newCard);

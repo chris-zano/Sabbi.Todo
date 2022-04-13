@@ -50,7 +50,18 @@ app.get('/loginData', (req, res) => {
             res.json(data)
         }
     })
-} )
+})
+app.get('/checkLog', (req, res) => {
+    userCredentials.find({},( err, data ) => {
+        if(err) {
+            res.end();
+            return;
+        }
+        else {
+            res.json(data)
+        }
+    })
+})
 app.get('/UIDapi', (req, res) => {
     userCredentials.find({},( err, data ) => {
         if(err) {
